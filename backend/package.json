@@ -1,0 +1,29 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "nodemon src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@prisma/client": "^7.6.0",
+    "@vercel/blob": "^2.3.3",
+    "axios": "^1.14.0",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14",
+    "openai": "^6.33.0",
+    "orama": "^2.0.6",
+    "prisma": "^7.6.0",
+    "stripe": "^21.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.2"
+  }
+}
