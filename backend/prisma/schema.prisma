@@ -11,17 +11,23 @@ datasource db {
 }
 
 model User {
-  id           String        @id @default(cuid())
-  clerkId      String        @unique
-  email        String        @unique
-  name         String?
-  subscription Subscription?
-  emails       Email[]
-  threads      Thread[]
-  webhooks     Webhook[]
-  chats        Chat[]
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
+  id                  String        @id @default(cuid())
+  clerkId             String        @unique
+  email               String        @unique
+  name                String?
+  // Aurinko integration fields
+  aurinkoAccessToken  String?
+  aurinkoRefreshToken String?
+  aurinkoAccountId    String?
+  aurinkoEmail        String?
+  aurinkoProvider     String?
+  subscription        Subscription?
+  emails              Email[]
+  threads             Thread[]
+  webhooks            Webhook[]
+  chats               Chat[]
+  createdAt           DateTime      @default(now())
+  updatedAt           DateTime      @updatedAt
 }
 
 model Subscription {
