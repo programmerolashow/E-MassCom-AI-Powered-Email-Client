@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 
 // Simple auth middleware - in production you'd use proper JWT validation
 export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
@@ -12,4 +13,21 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
 
   // You could add additional validation here
   next();
+};
+
+const isPublicRoute = createRouteMatcher(['/signin(.*)', '/signup(.*)'])
+
+export default clerkMiddleware((auth, request) => {
+  if (!isPublicRoute(request)) {
+    auth().protect()
+  }
+});
+
+export const config = {
+  matcher: [
+    // Skip Next.js internals and all static files, unless found in search params
+    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    // Always run for API routes
+    '/(api|trpc)(.*)',
+  ],
 };
