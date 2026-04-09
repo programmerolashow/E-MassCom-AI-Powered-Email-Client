@@ -1,5 +1,6 @@
 import { Router, Request, Response } from 'express';
 import { aurinkoService } from '../services/aurinko';
+import { prisma } from '../lib/prisma';
 
 const router = Router();
 
