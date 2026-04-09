@@ -15,11 +15,11 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
   next();
 };
 
-const isPublicRoute = createRouteMatcher(['/signin(.*)', '/signup(.*)'])
+const isPublicRoute = createRouteMatcher(['/signin(.*)', '/signup(.*)', '/webhooks(.*)'])
 
-export default clerkMiddleware((auth, request) => {
+export default clerkMiddleware(async (auth, request) => {
   if (!isPublicRoute(request)) {
-    auth().protect()
+    await auth().protect()
   }
 });
 

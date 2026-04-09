@@ -28,6 +28,10 @@ export type UserMinAggregateOutputType = {
   id: string | null
   clerkId: string | null
   email: string | null
+  firstName: string | null
+  lastName: string | null
+  imageUrl: string | null
+  emailVerified: boolean | null
   name: string | null
   aurinkoAccessToken: string | null
   aurinkoRefreshToken: string | null
@@ -42,6 +46,10 @@ export type UserMaxAggregateOutputType = {
   id: string | null
   clerkId: string | null
   email: string | null
+  firstName: string | null
+  lastName: string | null
+  imageUrl: string | null
+  emailVerified: boolean | null
   name: string | null
   aurinkoAccessToken: string | null
   aurinkoRefreshToken: string | null
@@ -56,6 +64,10 @@ export type UserCountAggregateOutputType = {
   id: number
   clerkId: number
   email: number
+  firstName: number
+  lastName: number
+  imageUrl: number
+  emailVerified: number
   name: number
   aurinkoAccessToken: number
   aurinkoRefreshToken: number
@@ -72,6 +84,10 @@ export type UserMinAggregateInputType = {
   id?: true
   clerkId?: true
   email?: true
+  firstName?: true
+  lastName?: true
+  imageUrl?: true
+  emailVerified?: true
   name?: true
   aurinkoAccessToken?: true
   aurinkoRefreshToken?: true
@@ -86,6 +102,10 @@ export type UserMaxAggregateInputType = {
   id?: true
   clerkId?: true
   email?: true
+  firstName?: true
+  lastName?: true
+  imageUrl?: true
+  emailVerified?: true
   name?: true
   aurinkoAccessToken?: true
   aurinkoRefreshToken?: true
@@ -100,6 +120,10 @@ export type UserCountAggregateInputType = {
   id?: true
   clerkId?: true
   email?: true
+  firstName?: true
+  lastName?: true
+  imageUrl?: true
+  emailVerified?: true
   name?: true
   aurinkoAccessToken?: true
   aurinkoRefreshToken?: true
@@ -187,6 +211,10 @@ export type UserGroupByOutputType = {
   id: string
   clerkId: string
   email: string
+  firstName: string | null
+  lastName: string | null
+  imageUrl: string | null
+  emailVerified: boolean
   name: string | null
   aurinkoAccessToken: string | null
   aurinkoRefreshToken: string | null
@@ -222,6 +250,10 @@ export type UserWhereInput = {
   id?: Prisma.StringFilter<"User"> | string
   clerkId?: Prisma.StringFilter<"User"> | string
   email?: Prisma.StringFilter<"User"> | string
+  firstName?: Prisma.StringNullableFilter<"User"> | string | null
+  lastName?: Prisma.StringNullableFilter<"User"> | string | null
+  imageUrl?: Prisma.StringNullableFilter<"User"> | string | null
+  emailVerified?: Prisma.BoolFilter<"User"> | boolean
   name?: Prisma.StringNullableFilter<"User"> | string | null
   aurinkoAccessToken?: Prisma.StringNullableFilter<"User"> | string | null
   aurinkoRefreshToken?: Prisma.StringNullableFilter<"User"> | string | null
@@ -241,6 +273,10 @@ export type UserOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   clerkId?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  firstName?: Prisma.SortOrderInput | Prisma.SortOrder
+  lastName?: Prisma.SortOrderInput | Prisma.SortOrder
+  imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  emailVerified?: Prisma.SortOrder
   name?: Prisma.SortOrderInput | Prisma.SortOrder
   aurinkoAccessToken?: Prisma.SortOrderInput | Prisma.SortOrder
   aurinkoRefreshToken?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -263,6 +299,10 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
+  firstName?: Prisma.StringNullableFilter<"User"> | string | null
+  lastName?: Prisma.StringNullableFilter<"User"> | string | null
+  imageUrl?: Prisma.StringNullableFilter<"User"> | string | null
+  emailVerified?: Prisma.BoolFilter<"User"> | boolean
   name?: Prisma.StringNullableFilter<"User"> | string | null
   aurinkoAccessToken?: Prisma.StringNullableFilter<"User"> | string | null
   aurinkoRefreshToken?: Prisma.StringNullableFilter<"User"> | string | null
@@ -282,6 +322,10 @@ export type UserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   clerkId?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  firstName?: Prisma.SortOrderInput | Prisma.SortOrder
+  lastName?: Prisma.SortOrderInput | Prisma.SortOrder
+  imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  emailVerified?: Prisma.SortOrder
   name?: Prisma.SortOrderInput | Prisma.SortOrder
   aurinkoAccessToken?: Prisma.SortOrderInput | Prisma.SortOrder
   aurinkoRefreshToken?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -302,6 +346,10 @@ export type UserScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"User"> | string
   clerkId?: Prisma.StringWithAggregatesFilter<"User"> | string
   email?: Prisma.StringWithAggregatesFilter<"User"> | string
+  firstName?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  lastName?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  imageUrl?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  emailVerified?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
   name?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   aurinkoAccessToken?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   aurinkoRefreshToken?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
@@ -316,6 +364,10 @@ export type UserCreateInput = {
   id?: string
   clerkId: string
   email: string
+  firstName?: string | null
+  lastName?: string | null
+  imageUrl?: string | null
+  emailVerified?: boolean
   name?: string | null
   aurinkoAccessToken?: string | null
   aurinkoRefreshToken?: string | null
@@ -335,6 +387,10 @@ export type UserUncheckedCreateInput = {
   id?: string
   clerkId: string
   email: string
+  firstName?: string | null
+  lastName?: string | null
+  imageUrl?: string | null
+  emailVerified?: boolean
   name?: string | null
   aurinkoAccessToken?: string | null
   aurinkoRefreshToken?: string | null
@@ -354,6 +410,10 @@ export type UserUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   clerkId?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aurinkoAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aurinkoRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -373,6 +433,10 @@ export type UserUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   clerkId?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aurinkoAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aurinkoRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -392,6 +456,10 @@ export type UserCreateManyInput = {
   id?: string
   clerkId: string
   email: string
+  firstName?: string | null
+  lastName?: string | null
+  imageUrl?: string | null
+  emailVerified?: boolean
   name?: string | null
   aurinkoAccessToken?: string | null
   aurinkoRefreshToken?: string | null
@@ -406,6 +474,10 @@ export type UserUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   clerkId?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aurinkoAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aurinkoRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -420,6 +492,10 @@ export type UserUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   clerkId?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aurinkoAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aurinkoRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -434,6 +510,10 @@ export type UserCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   clerkId?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  firstName?: Prisma.SortOrder
+  lastName?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
+  emailVerified?: Prisma.SortOrder
   name?: Prisma.SortOrder
   aurinkoAccessToken?: Prisma.SortOrder
   aurinkoRefreshToken?: Prisma.SortOrder
@@ -448,6 +528,10 @@ export type UserMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   clerkId?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  firstName?: Prisma.SortOrder
+  lastName?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
+  emailVerified?: Prisma.SortOrder
   name?: Prisma.SortOrder
   aurinkoAccessToken?: Prisma.SortOrder
   aurinkoRefreshToken?: Prisma.SortOrder
@@ -462,6 +546,10 @@ export type UserMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   clerkId?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  firstName?: Prisma.SortOrder
+  lastName?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
+  emailVerified?: Prisma.SortOrder
   name?: Prisma.SortOrder
   aurinkoAccessToken?: Prisma.SortOrder
   aurinkoRefreshToken?: Prisma.SortOrder
@@ -483,6 +571,10 @@ export type StringFieldUpdateOperationsInput = {
 
 export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
+}
+
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
 }
 
 export type DateTimeFieldUpdateOperationsInput = {
@@ -563,6 +655,10 @@ export type UserCreateWithoutSubscriptionInput = {
   id?: string
   clerkId: string
   email: string
+  firstName?: string | null
+  lastName?: string | null
+  imageUrl?: string | null
+  emailVerified?: boolean
   name?: string | null
   aurinkoAccessToken?: string | null
   aurinkoRefreshToken?: string | null
@@ -581,6 +677,10 @@ export type UserUncheckedCreateWithoutSubscriptionInput = {
   id?: string
   clerkId: string
   email: string
+  firstName?: string | null
+  lastName?: string | null
+  imageUrl?: string | null
+  emailVerified?: boolean
   name?: string | null
   aurinkoAccessToken?: string | null
   aurinkoRefreshToken?: string | null
@@ -615,6 +715,10 @@ export type UserUpdateWithoutSubscriptionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   clerkId?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aurinkoAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aurinkoRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -633,6 +737,10 @@ export type UserUncheckedUpdateWithoutSubscriptionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   clerkId?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aurinkoAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aurinkoRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -651,6 +759,10 @@ export type UserCreateWithoutEmailsInput = {
   id?: string
   clerkId: string
   email: string
+  firstName?: string | null
+  lastName?: string | null
+  imageUrl?: string | null
+  emailVerified?: boolean
   name?: string | null
   aurinkoAccessToken?: string | null
   aurinkoRefreshToken?: string | null
@@ -669,6 +781,10 @@ export type UserUncheckedCreateWithoutEmailsInput = {
   id?: string
   clerkId: string
   email: string
+  firstName?: string | null
+  lastName?: string | null
+  imageUrl?: string | null
+  emailVerified?: boolean
   name?: string | null
   aurinkoAccessToken?: string | null
   aurinkoRefreshToken?: string | null
@@ -703,6 +819,10 @@ export type UserUpdateWithoutEmailsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   clerkId?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aurinkoAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aurinkoRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -721,6 +841,10 @@ export type UserUncheckedUpdateWithoutEmailsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   clerkId?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aurinkoAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aurinkoRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -739,6 +863,10 @@ export type UserCreateWithoutThreadsInput = {
   id?: string
   clerkId: string
   email: string
+  firstName?: string | null
+  lastName?: string | null
+  imageUrl?: string | null
+  emailVerified?: boolean
   name?: string | null
   aurinkoAccessToken?: string | null
   aurinkoRefreshToken?: string | null
@@ -757,6 +885,10 @@ export type UserUncheckedCreateWithoutThreadsInput = {
   id?: string
   clerkId: string
   email: string
+  firstName?: string | null
+  lastName?: string | null
+  imageUrl?: string | null
+  emailVerified?: boolean
   name?: string | null
   aurinkoAccessToken?: string | null
   aurinkoRefreshToken?: string | null
@@ -791,6 +923,10 @@ export type UserUpdateWithoutThreadsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   clerkId?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aurinkoAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aurinkoRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -809,6 +945,10 @@ export type UserUncheckedUpdateWithoutThreadsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   clerkId?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aurinkoAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aurinkoRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -827,6 +967,10 @@ export type UserCreateWithoutWebhooksInput = {
   id?: string
   clerkId: string
   email: string
+  firstName?: string | null
+  lastName?: string | null
+  imageUrl?: string | null
+  emailVerified?: boolean
   name?: string | null
   aurinkoAccessToken?: string | null
   aurinkoRefreshToken?: string | null
@@ -845,6 +989,10 @@ export type UserUncheckedCreateWithoutWebhooksInput = {
   id?: string
   clerkId: string
   email: string
+  firstName?: string | null
+  lastName?: string | null
+  imageUrl?: string | null
+  emailVerified?: boolean
   name?: string | null
   aurinkoAccessToken?: string | null
   aurinkoRefreshToken?: string | null
@@ -879,6 +1027,10 @@ export type UserUpdateWithoutWebhooksInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   clerkId?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aurinkoAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aurinkoRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -897,6 +1049,10 @@ export type UserUncheckedUpdateWithoutWebhooksInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   clerkId?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aurinkoAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aurinkoRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -915,6 +1071,10 @@ export type UserCreateWithoutChatsInput = {
   id?: string
   clerkId: string
   email: string
+  firstName?: string | null
+  lastName?: string | null
+  imageUrl?: string | null
+  emailVerified?: boolean
   name?: string | null
   aurinkoAccessToken?: string | null
   aurinkoRefreshToken?: string | null
@@ -933,6 +1093,10 @@ export type UserUncheckedCreateWithoutChatsInput = {
   id?: string
   clerkId: string
   email: string
+  firstName?: string | null
+  lastName?: string | null
+  imageUrl?: string | null
+  emailVerified?: boolean
   name?: string | null
   aurinkoAccessToken?: string | null
   aurinkoRefreshToken?: string | null
@@ -967,6 +1131,10 @@ export type UserUpdateWithoutChatsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   clerkId?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aurinkoAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aurinkoRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -985,6 +1153,10 @@ export type UserUncheckedUpdateWithoutChatsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   clerkId?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aurinkoAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   aurinkoRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1061,6 +1233,10 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   id?: boolean
   clerkId?: boolean
   email?: boolean
+  firstName?: boolean
+  lastName?: boolean
+  imageUrl?: boolean
+  emailVerified?: boolean
   name?: boolean
   aurinkoAccessToken?: boolean
   aurinkoRefreshToken?: boolean
@@ -1081,6 +1257,10 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   id?: boolean
   clerkId?: boolean
   email?: boolean
+  firstName?: boolean
+  lastName?: boolean
+  imageUrl?: boolean
+  emailVerified?: boolean
   name?: boolean
   aurinkoAccessToken?: boolean
   aurinkoRefreshToken?: boolean
@@ -1095,6 +1275,10 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   id?: boolean
   clerkId?: boolean
   email?: boolean
+  firstName?: boolean
+  lastName?: boolean
+  imageUrl?: boolean
+  emailVerified?: boolean
   name?: boolean
   aurinkoAccessToken?: boolean
   aurinkoRefreshToken?: boolean
@@ -1109,6 +1293,10 @@ export type UserSelectScalar = {
   id?: boolean
   clerkId?: boolean
   email?: boolean
+  firstName?: boolean
+  lastName?: boolean
+  imageUrl?: boolean
+  emailVerified?: boolean
   name?: boolean
   aurinkoAccessToken?: boolean
   aurinkoRefreshToken?: boolean
@@ -1119,7 +1307,7 @@ export type UserSelectScalar = {
   updatedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "clerkId" | "email" | "name" | "aurinkoAccessToken" | "aurinkoRefreshToken" | "aurinkoAccountId" | "aurinkoEmail" | "aurinkoProvider" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "clerkId" | "email" | "firstName" | "lastName" | "imageUrl" | "emailVerified" | "name" | "aurinkoAccessToken" | "aurinkoRefreshToken" | "aurinkoAccountId" | "aurinkoEmail" | "aurinkoProvider" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   subscription?: boolean | Prisma.User$subscriptionArgs<ExtArgs>
   emails?: boolean | Prisma.User$emailsArgs<ExtArgs>
@@ -1144,6 +1332,10 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     id: string
     clerkId: string
     email: string
+    firstName: string | null
+    lastName: string | null
+    imageUrl: string | null
+    emailVerified: boolean
     name: string | null
     aurinkoAccessToken: string | null
     aurinkoRefreshToken: string | null
@@ -1583,6 +1775,10 @@ export interface UserFieldRefs {
   readonly id: Prisma.FieldRef<"User", 'String'>
   readonly clerkId: Prisma.FieldRef<"User", 'String'>
   readonly email: Prisma.FieldRef<"User", 'String'>
+  readonly firstName: Prisma.FieldRef<"User", 'String'>
+  readonly lastName: Prisma.FieldRef<"User", 'String'>
+  readonly imageUrl: Prisma.FieldRef<"User", 'String'>
+  readonly emailVerified: Prisma.FieldRef<"User", 'Boolean'>
   readonly name: Prisma.FieldRef<"User", 'String'>
   readonly aurinkoAccessToken: Prisma.FieldRef<"User", 'String'>
   readonly aurinkoRefreshToken: Prisma.FieldRef<"User", 'String'>

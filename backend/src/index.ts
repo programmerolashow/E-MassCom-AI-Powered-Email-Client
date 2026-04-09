@@ -5,6 +5,7 @@ import { prisma } from './lib/prisma';
 import userRoutes from './routes/users';
 import emailRoutes from './routes/emails';
 import authRoutes from './routes/auth';
+import webhookRoutes from './routes/webhooks';
 import { authMiddleware } from './middleware/auth';
 
 // Load environment variables
@@ -28,6 +29,7 @@ app.get('/', (req: Request, res: Response) => {
       users: '/api/users',
       emails: '/api/emails',
       auth: '/api/auth',
+      webhooks: '/api/webhooks',
     },
   });
 });
@@ -36,6 +38,7 @@ app.get('/', (req: Request, res: Response) => {
 app.use('/api/users', authMiddleware, userRoutes);
 app.use('/api/emails', authMiddleware, emailRoutes);
 app.use('/api/auth', authRoutes); // Auth routes don't need auth middleware
+app.use('/api/webhooks', webhookRoutes); // Webhook routes don't need auth middleware
 
 // Error handling middleware
 app.use((err: any, req: Request, res: Response, next: express.NextFunction) => {
