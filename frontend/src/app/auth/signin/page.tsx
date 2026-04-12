@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useSignIn } from '@clerk/react';
+import { useSignIn } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -40,13 +40,27 @@ export default function SignInPage() {
     }
 
     try {
-      const result = await (signIn).create({
-        strategy: 'password',
+      // Use the password() method which handles create + password in one step
+      const { error: pwError } = await signIn.password({
         identifier: formData.email,
         password: formData.password,
       });
 
-      if (result?.status === 'complete') {
+      if (pwError) {
+        const code = pwError.code;
+        if (code === 'form_identifier_not_found') {
+          setError('User does not exist. Please sign up first.');
+        } else if (code === 'form_password_incorrect') {
+          setError('Invalid email or password.');
+        } else {
+          setError(pwError.message || 'Invalid email or password');
+        }
+        return;
+      }
+
+      // Finalize the sign-in to activate the session
+      if (signIn.status === 'complete') {
+        await signIn.finalize();
         router.push('/inbox');
       } else {
         setError('Sign in requires additional steps. Please try again.');
@@ -84,10 +98,15 @@ export default function SignInPage() {
     setSuccess('Redirecting to Google...');
 
     try {
-      await (signIn).authenticateWithRedirect({
+      const { error: ssoError } = await signIn.sso({
         strategy: 'oauth_google',
-        redirectUrlComplete: '/inbox',
+        redirectUrl: `${window.location.origin}/auth/sso-callback`,
+        redirectCallbackUrl: `${window.location.origin}/inbox`,
       });
+      if (ssoError) {
+        setSuccess('');
+        setError(ssoError.message || 'Failed to sign in with Google. Please try again.');
+      }
     } catch (err: unknown) {
       setSuccess('');
       setError('Failed to sign in with Google. Please try again.');
@@ -105,10 +124,15 @@ export default function SignInPage() {
     setSuccess('Redirecting to Apple...');
 
     try {
-      await (signIn).authenticateWithRedirect({
+      const { error: ssoError } = await signIn.sso({
         strategy: 'oauth_apple',
-        redirectUrlComplete: '/inbox',
+        redirectUrl: `${window.location.origin}/auth/sso-callback`,
+        redirectCallbackUrl: `${window.location.origin}/inbox`,
       });
+      if (ssoError) {
+        setSuccess('');
+        setError(ssoError.message || 'Failed to sign in with iCloud. Please try again.');
+      }
     } catch (err: unknown) {
       setSuccess('');
       setError('Failed to sign in with iCloud. Please try again.');
@@ -231,7 +255,7 @@ export default function SignInPage() {
 
           <div className="mt-6 text-center">
             <p className="text-gray-600">
-              Dont have an account?{' '}
+              Don&apos;t have an account?{' '}
               <Link href="/auth/signup" className="text-blue-600 font-medium hover:underline">
                 Sign up
               </Link>

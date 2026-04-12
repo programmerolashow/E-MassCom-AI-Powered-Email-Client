@@ -53,16 +53,40 @@ export default function SignUpPage() {
     }
 
     try {
-      const result = await (signUp).create({
+      // Step 1: Create the sign-up with basic info
+      const { error: createError } = await signUp.create({
         firstName: formData.firstName,
         lastName: formData.lastName,
         emailAddress: formData.email,
-        password: formData.password,
       });
 
-      if (result?.status === 'complete') {
+      if (createError) {
+        const code = createError.code;
+        if (code === 'form_identifier_exists') {
+          setError('User already exists. Please sign in instead.');
+        } else {
+          setError(createError.message || 'An error occurred during sign up');
+        }
+        return;
+      }
+
+      // Step 2: Set the password
+      const { error: pwError } = await signUp.password({
+        password: formData.password,
+        emailAddress: formData.email,
+      });
+
+      if (pwError) {
+        setError(pwError.message || 'Failed to set password');
+        return;
+      }
+
+      // Step 3: Check status and proceed
+      if (signUp.status === 'complete') {
+        await signUp.finalize();
         router.push('/inbox');
       } else {
+        // Email verification required
         router.push('/auth/verify-email');
       }
     } catch (err: unknown) {
@@ -96,10 +120,15 @@ export default function SignUpPage() {
     setSuccess('Redirecting to Google...');
 
     try {
-      await (signUp).authenticateWithRedirect({
+      const { error: ssoError } = await signUp.sso({
         strategy: 'oauth_google',
-        redirectUrlComplete: '/inbox',
+        redirectUrl: `${window.location.origin}/auth/sso-callback`,
+        redirectCallbackUrl: `${window.location.origin}/inbox`,
       });
+      if (ssoError) {
+        setSuccess('');
+        setError(ssoError.message || 'Failed to sign up with Google. Please try again.');
+      }
     } catch (err: unknown) {
       setSuccess('');
       setError('Failed to sign up with Google. Please try again.');
@@ -117,10 +146,15 @@ export default function SignUpPage() {
     setSuccess('Redirecting to Apple...');
 
     try {
-      await (signUp).authenticateWithRedirect({
+      const { error: ssoError } = await signUp.sso({
         strategy: 'oauth_apple',
-        redirectUrlComplete: '/inbox',
+        redirectUrl: `${window.location.origin}/auth/sso-callback`,
+        redirectCallbackUrl: `${window.location.origin}/inbox`,
       });
+      if (ssoError) {
+        setSuccess('');
+        setError(ssoError.message || 'Failed to sign up with iCloud. Please try again.');
+      }
     } catch (err: unknown) {
       setSuccess('');
       setError('Failed to sign up with iCloud. Please try again.');

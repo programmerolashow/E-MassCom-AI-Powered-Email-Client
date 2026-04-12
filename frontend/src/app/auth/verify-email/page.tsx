@@ -17,12 +17,11 @@ export default function VerifyEmailPage() {
 
   // State hooks
   const [code, setCode] = useState<string>('');
-  const email = (signUp?.emailAddress as string) || '';
+  const [email, setEmail] = useState<string>((signUp?.emailAddress as string) || '');
   const [status, setStatus] = useState<VerificationStatus>('pending');
-  const error =
-  isLoaded && !signUp
-    ? 'Please complete the sign-up process first'
-    : '';
+  const [error, setError] = useState<string>(
+    isLoaded && !signUp ? 'Please complete the sign-up process first' : ''
+  );
   const [countdown, setCountdown] = useState<number>(0);
 
   // Redirect if user is already verified
@@ -32,13 +31,12 @@ export default function VerifyEmailPage() {
     }
   }, [user, router]);
 
-  // Set email from signUp object
+  // Update email from signUp object when it loads
   useEffect(() => {
-    if (signUp && isLoaded) {
-      const signUpEmail = (signUp.emailAddress as string) || '';
-      setEmail(signUpEmail);
+    if (signUp?.emailAddress) {
+      setEmail(signUp.emailAddress as string);
     }
-  }, [signUp, isLoaded]);
+  }, [signUp]);
 
   // Show instruction if signup not complete
   useEffect(() => {
